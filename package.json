@@ -5,7 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "start": "node app",
-    "test": "jest"
+    "test": "jest --passWithNoTest"
   },
   "dependencies": {
     "fastify": "^2.0.0",
