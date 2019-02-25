@@ -2,5 +2,11 @@
   "extends": "airbnb-base",
   "env": {
     "jest": true
+  },
+  "rules": {
+    "quotes": ["error", "double"],
+    "semi": ["error", "never"],
+    "comma-dangle": "off",
+    "no-console": "off"
   }
 }
