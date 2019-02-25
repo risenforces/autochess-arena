@@ -7,6 +7,10 @@
     "start": "node app",
     "test": "jest"
   },
+  "dependencies": {
+    "fastify": "^2.0.0",
+    "pino": "^5.11.1"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.14.1",
