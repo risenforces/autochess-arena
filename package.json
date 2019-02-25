@@ -1,0 +1,28 @@
+{
+  "name": "autochess-arena-server",
+  "version": "1.0.0",
+  "description": "NodeJS server for AutoChess Arena project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "jest": "^24.1.0"
+  },
+  "keywords": [
+    "autochess",
+    "arena",
+    "autochess-arena",
+    "dota",
+    "dotaautochess",
+    "dota-auto-chess",
+    "auto",
+    "chess"
+  ],
+  "author": "risenforces <risenforces@gmail.com>",
+  "license": "MIT"
+}
