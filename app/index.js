@@ -7,7 +7,7 @@ const fastify = require("./fastify")
 require("./routes")
 
 const port = parseInt(process.env.PORT, 10) || 8080
-const clusteringEnabled = process.env.CLUSTERING_ENABLED === "true"
+const clusteringEnabled = process.env.ENABLE_CLUSTERING === "true"
 
 const setupClusters = () => {
   const cores = os.cpus().length
