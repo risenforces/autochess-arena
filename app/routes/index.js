@@ -1,1 +1,2 @@
 require("./status")
+require("./auth")
