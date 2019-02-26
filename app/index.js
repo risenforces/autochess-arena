@@ -1,8 +1,6 @@
 const fastify = require("./fastify")
 
-fastify.get("/", (req, res) => {
-  res.send("Welcome to AutoChess Arena!")
-})
+require("./routes")
 
 fastify.listen(8080, (err, address) => {
   if (err) throw err
