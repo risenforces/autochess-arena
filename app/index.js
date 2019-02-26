@@ -4,6 +4,8 @@ const os = require("os")
 const cluster = require("cluster")
 const app = require("./app")
 
+require("./db")
+
 require("./routes")
 
 const port = parseInt(process.env.PORT, 10) || 8080
