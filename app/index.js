@@ -2,7 +2,7 @@ require("dotenv").config()
 
 const os = require("os")
 const cluster = require("cluster")
-const fastify = require("./fastify")
+const app = require("./app")
 
 require("./routes")
 
@@ -25,21 +25,17 @@ const setupClusters = () => {
   })
 
   cluster.on("exit", (worker, code, signal) => {
-    const message = `Worker ${worker.process.pid} died with code ${code} and signal ${signal}.`
-    fastify.log.error(message)
-    console.error(message)
+    console.error(`Worker ${worker.process.pid} died with code ${code} and signal ${signal}.`)
   })
 }
 
-const setupFastify = () => {
-  fastify.listen(port, (err, address) => {
-    if (err) throw err
-    console.info(`Listening on ${address}.`)
-  })
+const setupApp = () => {
+  app.listen(port)
+  console.info(`Listening on ${port}`)
 }
 
 if (clusteringEnabled && cluster.isMaster) {
   setupClusters()
 } else {
-  setupFastify()
+  setupApp()
 }

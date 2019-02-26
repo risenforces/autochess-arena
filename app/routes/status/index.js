@@ -1,5 +1,5 @@
-const fastify = require("../../fastify")
+const app = require("../../app")
 
-fastify.get("/status", (req, res) => {
+app.get("/status", (req, res) => {
   res.send({ status: "OK" })
 })
