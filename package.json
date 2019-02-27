@@ -1,8 +1,8 @@
 {
-  "name": "autochess-arena-server",
+  "name": "autochess-arena",
   "version": "1.0.0",
-  "description": "NodeJS server for AutoChess Arena project",
-  "main": "app/index.js",
+  "description": "AutoChess Arena Project",
+  "main": "server/index.js",
   "scripts": {
     "build": "next build app",
     "start": "node server",

@@ -1,4 +1,4 @@
-# autochess-arena-server
-[![Build Status](https://travis-ci.com/risenforces/autochess-arena-server.svg?branch=master)](https://travis-ci.com/risenforces/autochess-arena-server)
+# autochess-arena
+[![Build Status](https://travis-ci.com/risenforces/autochess-arena.svg?branch=master)](https://travis-ci.com/risenforces/autochess-arena)
 
-NodeJS server for AutoChess Arena project.
+AutoChess Arena Project.
