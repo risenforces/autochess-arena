@@ -4,7 +4,7 @@
   "description": "NodeJS server for AutoChess Arena project",
   "main": "app/index.js",
   "scripts": {
-    "start": "node app",
+    "server": "node server",
     "test": "jest"
   },
   "dependencies": {
