@@ -4,7 +4,8 @@
   "description": "NodeJS server for AutoChess Arena project",
   "main": "app/index.js",
   "scripts": {
-    "server": "node server",
+    "build": "next build app",
+    "start": "node server",
     "test": "jest"
   },
   "dependencies": {
@@ -13,14 +14,19 @@
     "express": "^4.16.4",
     "mongoose": "^5.4.15",
     "morgan": "^1.9.1",
+    "next": "^8.0.3",
     "passport": "^0.4.0",
-    "passport-steam": "^1.0.10"
+    "passport-steam": "^1.0.10",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.14.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
     "jest": "^24.1.0",
     "supertest": "^3.4.2"
   },

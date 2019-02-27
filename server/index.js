@@ -2,38 +2,49 @@ require("dotenv").config()
 
 const os = require("os")
 const cluster = require("cluster")
+const app = require("../app")
 const server = require("./server")
+require("./routes")
 
 require("./db")
 
-require("./routes")
-
+const dev = process.env.NODE_ENV !== "production"
 const port = parseInt(process.env.PORT, 10) || 8080
-const clusteringEnabled = process.env.ENABLE_CLUSTERING === "true"
+
+// next.js doesn't allow to use clustering in development mode
+const clusteringEnabled = !dev
+
+const info = (message) => {
+  // it's useless to log start messages in development mode (next.js removes most of them)
+  if (!dev) console.info(message)
+}
 
 const setupClusters = () => {
   const cores = os.cpus().length
 
-  console.info(`Setting on ${cores} cores.`)
+  info(`Setting on ${cores} cores.`)
 
   for (let i = 0; i < cores; i++) cluster.fork()
 
   cluster.on("online", (worker) => {
-    console.info(`Worker ${worker.process.pid} is started.`)
+    info(`Worker ${worker.process.pid} is started.`)
   })
 
   cluster.on("message", (worker, message) => {
-    console.info(`Worker ${worker.process.pid} sent message: ${message}.`)
+    info(`Worker ${worker.process.pid} sent message: ${message}.`)
   })
 
   cluster.on("exit", (worker, code, signal) => {
-    console.error(`Worker ${worker.process.pid} died with code ${code} and signal ${signal}.`)
+    info(`Worker ${worker.process.pid} died with code ${code} and signal ${signal}.`)
   })
 }
 
-const setupApp = () => {
+const setupApp = async () => {
+  await app.prepare()
   server.listen(port)
-  console.info(`Listening on ${port}`)
+  info(`Listening on ${port}`)
+
+  server.get("*", app.getRequestHandler())
 }
 
 if (clusteringEnabled && cluster.isMaster) {

@@ -14,3 +14,6 @@ bower_components/
 # dotenv environment variables file
 .env
 .env.test
+
+# build folders
+.next
