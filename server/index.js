@@ -2,7 +2,7 @@ require("dotenv").config()
 
 const os = require("os")
 const cluster = require("cluster")
-const app = require("./app")
+const server = require("./server")
 
 require("./db")
 
@@ -32,7 +32,7 @@ const setupClusters = () => {
 }
 
 const setupApp = () => {
-  app.listen(port)
+  server.listen(port)
   console.info(`Listening on ${port}`)
 }
 
