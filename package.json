@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build app",
     "start": "node server",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
