@@ -43,8 +43,6 @@ const setupApp = async () => {
   await app.prepare()
   server.listen(port)
   info(`Listening on ${port}`)
-
-  server.get("*", app.getRequestHandler())
 }
 
 if (clusteringEnabled && cluster.isMaster) {
