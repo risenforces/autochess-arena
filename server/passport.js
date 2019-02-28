@@ -2,10 +2,11 @@ const passport = require("passport")
 const { Strategy: SteamStrategy } = require("passport-steam")
 const User = require("./models/User")
 
+const dev = process.env.NODE_ENV !== "production"
 const host = process.env.HOST
 const port = process.env.PORT
 
-const address = host + (port ? `:${port}` : "")
+const address = host + (port && dev ? `:${port}` : "")
 const steamApiKey = process.env.STEAM_API_KEY
 
 passport.serializeUser((user, done) => {
