@@ -9,7 +9,10 @@ const session = expressSession({
   secret: sessionSecret,
   store,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 93312000000
+  }
 })
 
 module.exports = session

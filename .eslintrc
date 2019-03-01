@@ -19,6 +19,8 @@
     "semi": ["warn", "never"],
     "no-unused-vars": "warn",
     "no-console": "off",
-    "import/no-unresolved": ["error", { "commonjs": true }]
+    "import/no-unresolved": ["error", { "commonjs": true }],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
   }
 }

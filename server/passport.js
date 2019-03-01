@@ -1,6 +1,7 @@
 const passport = require("passport")
 const { Strategy: SteamStrategy } = require("passport-steam")
 const User = require("./models/User")
+const AutoChessAPI = require("./helpers/AutoChessAPI")
 
 const dev = process.env.NODE_ENV !== "production"
 const host = process.env.HOST
@@ -20,20 +21,28 @@ passport.deserializeUser(async (_id, done) => {
 passport.use(
   new SteamStrategy(
     {
-      returnURL: `${address}/auth/callback`,
+      returnURL: `${address}/login/callback`,
       realm: address,
       apiKey: steamApiKey
     },
     async (identifier, profile, done) => {
-      const { steamid, personaname, profileurl, avatar } = profile._json
+      const { steamid, personaname, profileurl, avatarmedium } = profile._json
       const user = await User.findOne({ "steam.id": steamid }).exec()
       if (!user) {
+        const gameData = await AutoChessAPI.getPlayerFullData(steamid)
+        const game = gameData.data
+
         const user = await User.create({
           steam: {
             id: steamid,
             profile_name: personaname,
-            avatar_url: avatar,
+            avatar_url: avatarmedium,
             profile_url: profileurl
+          },
+          game: {
+            rank: game.rank,
+            matches: game.matches,
+            candies: game.candies
           }
         })
         return done(null, user, { message: "Created account" })
