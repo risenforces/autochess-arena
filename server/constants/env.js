@@ -1,12 +1,13 @@
 const dev = process.env.NODE_ENV !== "production"
 const host = process.env.HOST
-const port = process.env.PORT
+const port = parseInt(process.env.PORT, 10) || 8080
+const address = dev ? `${host}:${port}` : host
 
 module.exports = {
   dev,
   host,
   port,
-  address: dev ? `${host}:${port}` : host,
+  address,
 
   mongodbConnectionUrl: process.env.MONGODB_CONNECTION_URL,
   steamApiKey: process.env.STEAM_API_KEY,
