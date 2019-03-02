@@ -35,38 +35,30 @@ passport.use(
 
         const playerFullData = playerFullDataResponse.data
 
-        let newAccountData
+        let gameData
         if (playerFullDataResponse.status === "OK") {
-          newAccountData = {
-            steam: {
-              id: steamid,
-              profile_name: personaname,
-              avatar_url: avatarmedium,
-              profile_url: profileurl
-            },
-            game: {
-              exists: true,
-              rank: playerFullData.rank,
-              matches: playerFullData.matches,
-              candies: playerFullData.candies
-            }
+          gameData = {
+            exists: true,
+            rank: playerFullData.rank,
+            matches: playerFullData.matches,
+            candies: playerFullData.candies
           }
         } else {
-          newAccountData = {
-            steam: {
-              id: steamid,
-              profile_name: personaname,
-              avatar_url: avatarmedium,
-              profile_url: profileurl
-            },
-            game: {
-              exists: false,
-              error: playerFullDataResponse.message
-            }
+          gameData = {
+            exists: false,
+            error: playerFullDataResponse.message
           }
         }
 
-        const user = await User.create(newAccountData)
+        const user = await User.create({
+          steam: {
+            id: steamid,
+            profile_name: personaname,
+            avatar_url: avatarmedium,
+            profile_url: profileurl
+          },
+          game: gameData
+        })
 
         return done(null, user, { message: "Created account" })
       }
