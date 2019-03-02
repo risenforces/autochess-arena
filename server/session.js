@@ -1,8 +1,8 @@
 const expressSession = require("express-session")
 const MongoStore = require("connect-mongo")(expressSession)
 const db = require("./db")
+const { sessionSecret } = require("./constants/env")
 
-const sessionSecret = process.env.SESSION_SECRET
 const store = new MongoStore({ mongooseConnection: db })
 
 const session = expressSession({

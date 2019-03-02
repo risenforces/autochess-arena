@@ -2,13 +2,7 @@ const passport = require("passport")
 const { Strategy: SteamStrategy } = require("passport-steam")
 const User = require("./models/User")
 const AutoChessAPI = require("./helpers/AutoChessAPI")
-
-const dev = process.env.NODE_ENV !== "production"
-const host = process.env.HOST
-const port = process.env.PORT
-
-const address = host + (port && dev ? `:${port}` : "")
-const steamApiKey = process.env.STEAM_API_KEY
+const { address, steamApiKey } = require("./constants/env")
 
 passport.serializeUser((user, done) => {
   done(null, user._id)
@@ -21,7 +15,7 @@ passport.deserializeUser(async (_id, done) => {
 passport.use(
   new SteamStrategy(
     {
-      returnURL: `${address}/login/callback`,
+      returnURL: address + "/login/callback",
       realm: address,
       apiKey: steamApiKey
     },
