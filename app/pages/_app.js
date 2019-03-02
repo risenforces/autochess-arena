@@ -15,20 +15,7 @@ export default class CustomApp extends App {
             href="/static/favicon.ico"
             type="image/x-icon"
           />
-          <style jsx>{`
-            * {
-              box-sizing: border-box;
-            }
-
-            body {
-              margin: 0;
-              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-                "Droid Sans", "Helvetica Neue", sans-serif;
-              text-rendering: optimizeLegibility;
-              -webkit-font-smoothing: antialiased;
-            }
-          `}</style>
+          <link rel="stylesheet" href="/static/style.css" />
         </Head>
         <Component {...pageProps} />
       </Container>
