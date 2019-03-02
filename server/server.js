@@ -12,5 +12,8 @@ server.use(session)
 server.use(passport.initialize())
 server.use(passport.session())
 server.use(logger)
+server.use("/static", express.static(__dirname + "/static", {
+  maxAge: "365d"
+}));
 
 module.exports = server
