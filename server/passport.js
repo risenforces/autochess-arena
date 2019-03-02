@@ -29,22 +29,45 @@ passport.use(
       const { steamid, personaname, profileurl, avatarmedium } = profile._json
       const user = await User.findOne({ "steam.id": steamid }).exec()
       if (!user) {
-        const gameData = await AutoChessAPI.getPlayerFullData(steamid)
-        const game = gameData.data
+        const playerFullDataResponse = await AutoChessAPI.getPlayerFullData(
+          steamid
+        )
 
-        const user = await User.create({
-          steam: {
-            id: steamid,
-            profile_name: personaname,
-            avatar_url: avatarmedium,
-            profile_url: profileurl
-          },
-          game: {
-            rank: game.rank,
-            matches: game.matches,
-            candies: game.candies
+        const playerFullData = playerFullDataResponse.data
+
+        let newAccountData
+        if (playerFullDataResponse.status === "OK") {
+          newAccountData = {
+            steam: {
+              id: steamid,
+              profile_name: personaname,
+              avatar_url: avatarmedium,
+              profile_url: profileurl
+            },
+            game: {
+              exists: true,
+              rank: playerFullData.rank,
+              matches: playerFullData.matches,
+              candies: playerFullData.candies
+            }
           }
-        })
+        } else {
+          newAccountData = {
+            steam: {
+              id: steamid,
+              profile_name: personaname,
+              avatar_url: avatarmedium,
+              profile_url: profileurl
+            },
+            game: {
+              exists: false,
+              error: playerFullDataResponse.message
+            }
+          }
+        }
+
+        const user = await User.create(newAccountData)
+
         return done(null, user, { message: "Created account" })
       }
       return done(null, user, { message: "Logged In" })

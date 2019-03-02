@@ -29,15 +29,13 @@ export class MiniProfile extends React.Component {
         <MiniProfileLoginButton href="/login">Login</MiniProfileLoginButton>
       )
 
-    const rankString = user.game.rank.string
-
     return (
       <MiniProfileBlock>
         <MiniProfileInfo>
           <MiniProfileInfoUsername>
             {user.steam.profile_name}
           </MiniProfileInfoUsername>
-          <MiniProfileInfoRank rankString={rankString} />
+          <MiniProfileInfoRank game={user.game} />
         </MiniProfileInfo>
         <MiniProfileAvatarContainer
           onFocus={this.openMenu}

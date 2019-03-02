@@ -16,6 +16,11 @@ const UserSchema = new Schema({
     profile_url: String
   },
   game: {
+    exists: {
+      type: Boolean,
+      required: true
+    },
+    error: String,
     rank: {
       number: Number,
       string: String

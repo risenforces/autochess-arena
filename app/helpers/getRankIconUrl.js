@@ -6,7 +6,8 @@ const iconsFiles = {
   Bishop: "bishop.png",
   Rook: "rook.png",
   King: "king.png",
-  Queen: "queen.png"
+  Queen: "queen.png",
+  Error: "error.png"
 }
 
 export const getRankIconUrl = rankString => {
