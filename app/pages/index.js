@@ -1,15 +1,17 @@
 import React from "react"
+import Head from "next/head"
 import { Header } from "../components/Header"
 
 class Index extends React.Component {
-  static getInitialProps({ query }) {
-    return query
-  }
-
   render() {
-    const { user } = this.props
-
-    return <Header user={user} />
+    return (
+      <>
+        <Head>
+          <title>AutoChess Arena</title>
+        </Head>
+        <Header />
+      </>
+    )
   }
 }
 

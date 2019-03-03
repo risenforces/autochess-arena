@@ -4,10 +4,10 @@ import { Line } from "../Line"
 import { HeaderBlock } from "./Block"
 import { HeaderLeft } from "./Left"
 import { HeaderRight } from "./Right"
-import { MiniProfile } from "./MiniProfile"
+import { ConnectedMiniProfile } from "./MiniProfile"
 import { Logo } from "./Logo"
 
-export const Header = ({ user }) => (
+export const Header = () => (
   <>
     <ContentBlock>
       <HeaderBlock>
@@ -15,7 +15,7 @@ export const Header = ({ user }) => (
           <Logo />
         </HeaderLeft>
         <HeaderRight>
-          <MiniProfile user={user} />
+          <ConnectedMiniProfile />
         </HeaderRight>
       </HeaderBlock>
     </ContentBlock>

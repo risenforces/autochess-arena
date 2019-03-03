@@ -2,11 +2,13 @@ import React from "react"
 import { LogoBlock } from "./Block"
 import { LogoImage } from "./Image"
 import { LogoText } from "./Text"
-import Router from "next/router"
+import Link from "next/link"
 
 export const Logo = () => (
-  <LogoBlock onClick={() => Router.push("/")}>
-    <LogoImage src="/static/logo.png" />
-    <LogoText>ARENA</LogoText>
-  </LogoBlock>
+  <Link href="/" passHref>
+    <LogoBlock>
+      <LogoImage src="/static/logo.png" />
+      <LogoText>Arena</LogoText>
+    </LogoBlock>
+  </Link>
 )

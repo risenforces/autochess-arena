@@ -1,24 +1,51 @@
 import React from "react"
 import App, { Container } from "next/app"
-import Head from "next/head"
+import { createGlobalStyle } from "styled-components"
+import withRedux from "next-redux-wrapper"
+import { Provider } from "react-redux"
+import { makeStore } from "../store"
+import { sessionActions } from "../store/reducers/session"
 
-export default class CustomApp extends App {
+const GlobalStyles = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+`
+
+class CustomApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+    if (ctx.req && ctx.req.user) {
+      ctx.store.dispatch(sessionActions.setUser(ctx.req.user))
+    }
+
+    let pageProps = {}
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+
+    return { pageProps }
+  }
+
   render() {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, store } = this.props
     return (
       <Container>
-        <Head>
-          <title>AutoChess Arena</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link
-            rel="shortcut icon"
-            href="/static/favicon.ico"
-            type="image/x-icon"
-          />
-          <link rel="stylesheet" href="/static/style.css" />
-        </Head>
-        <Component {...pageProps} />
+        <GlobalStyles />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </Container>
     )
   }
 }
+
+export default withRedux(makeStore)(CustomApp)

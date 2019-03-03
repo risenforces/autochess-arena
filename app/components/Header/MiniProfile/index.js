@@ -1,4 +1,6 @@
 import React from "react"
+import { connect } from "react-redux"
+import { sessionSelectors } from "../../../store/reducers/session"
 import { MiniProfileBlock } from "./Block"
 import { MiniProfileAvatar } from "./Avatar"
 import { MiniProfileInfo } from "./Info"
@@ -8,15 +10,11 @@ import { MiniProfileLoginButton } from "./LoginButton"
 import { MiniProfileMenu } from "./Menu"
 import { MiniProfileAvatarContainer } from "./AvatarContainer"
 
-export class MiniProfile extends React.Component {
+class MiniProfile extends React.Component {
   state = {
     isMenuOpened: false
   }
 
-  toggleMenu = () => {
-    console.log("toggle")
-    this.setState(prev => ({ isMenuOpened: !prev.isMenuOpened }))
-  }
   openMenu = () => this.setState({ isMenuOpened: true })
   closeMenu = () => this.setState({ isMenuOpened: false })
 
@@ -49,3 +47,9 @@ export class MiniProfile extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  user: sessionSelectors.userSelector(state)
+})
+
+export const ConnectedMiniProfile = connect(mapStateToProps)(MiniProfile)

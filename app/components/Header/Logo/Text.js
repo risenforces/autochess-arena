@@ -5,4 +5,5 @@ export const LogoText = styled.h1`
   line-height: 18px;
   font-weight: 500;
   margin: 0;
+  text-transform: uppercase;
 `
