@@ -5,8 +5,10 @@ import { MiniProfileMenuLine } from "./Line"
 
 export const MiniProfileMenu = ({ isOpen }) => (
   <MiniProfileMenuBlock isOpen={isOpen} onClick={() => {}}>
-    <MiniProfileMenuItem>My profile</MiniProfileMenuItem>
+    <MiniProfileMenuItem to="/profile">My profile</MiniProfileMenuItem>
     <MiniProfileMenuLine />
-    <MiniProfileMenuItem href="/logout">Logout</MiniProfileMenuItem>
+    <MiniProfileMenuItem to="/logout" external>
+      Logout
+    </MiniProfileMenuItem>
   </MiniProfileMenuBlock>
 )

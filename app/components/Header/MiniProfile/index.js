@@ -15,7 +15,7 @@ class MiniProfile extends React.Component {
     isMenuOpened: false
   }
 
-  openMenu = () => this.setState({ isMenuOpened: true })
+  toggleMenu = () => this.setState({ isMenuOpened: !this.state.isMenuOpened })
   closeMenu = () => this.setState({ isMenuOpened: false })
 
   render() {
@@ -35,12 +35,12 @@ class MiniProfile extends React.Component {
           </MiniProfileInfoUsername>
           <MiniProfileInfoRank game={user.game} />
         </MiniProfileInfo>
-        <MiniProfileAvatarContainer
-          onFocus={this.openMenu}
-          onBlur={this.closeMenu}
-          tabIndex="0"
-        >
-          <MiniProfileAvatar src={user.steam.avatar_url} draggable="false" />
+        <MiniProfileAvatarContainer onBlur={this.closeMenu} tabIndex="0">
+          <MiniProfileAvatar
+            src={user.steam.avatar_url}
+            draggable="false"
+            onClick={this.toggleMenu}
+          />
           <MiniProfileMenu isOpen={isMenuOpened} />
         </MiniProfileAvatarContainer>
       </MiniProfileBlock>

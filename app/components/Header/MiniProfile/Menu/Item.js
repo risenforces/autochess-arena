@@ -1,11 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import Link from "next/link"
+import Router from "next/router"
 
-const StyledLink = styled.a`
+const StyledLink = styled.span`
   color: rgb(153, 153, 153);
   display: block;
-  text-decoration: none;
   transition: color 0.2s ease 0s;
   font-size: 14px;
   line-height: 17px;
@@ -18,13 +17,14 @@ const StyledLink = styled.a`
   }
 `
 
-export const MiniProfileMenuItem = ({ children, toPage, ...rest }) => {
-  if (toPage) {
-    return (
-      <Link passHref {...rest}>
-        <StyledLink>{children}</StyledLink>
-      </Link>
-    )
-  }
-  return <StyledLink {...rest}>{children}</StyledLink>
+export const MiniProfileMenuItem = ({ children, to, external, ...rest }) => {
+  const handle = external
+    ? () => (window.location.href = to)
+    : () => Router.push(to)
+
+  return (
+    <StyledLink onClick={handle} {...rest}>
+      {children}
+    </StyledLink>
+  )
 }
