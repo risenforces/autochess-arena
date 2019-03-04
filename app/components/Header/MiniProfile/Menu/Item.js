@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Router from "next/router"
 
 const StyledLink = styled.span`
-  color: rgb(153, 153, 153);
+  color: ${props => props.color ? props.color.default : "#999999"};
   display: block;
   transition: color 0.2s ease 0s;
   font-size: 14px;
@@ -13,7 +13,7 @@ const StyledLink = styled.span`
 
   &:hover {
     background-color: rgb(250, 250, 250);
-    color: rgb(0, 0, 0);
+    color: ${props => props.color ? props.color.hover : "#000000"};
   }
 `
 

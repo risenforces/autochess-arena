@@ -7,7 +7,11 @@ export const MiniProfileMenu = ({ isOpen }) => (
   <MiniProfileMenuBlock isOpen={isOpen} onClick={() => {}}>
     <MiniProfileMenuItem to="/profile">My profile</MiniProfileMenuItem>
     <MiniProfileMenuLine />
-    <MiniProfileMenuItem to="/logout" external>
+    <MiniProfileMenuItem
+      to="/logout"
+      external
+      color={{ default: "#ff7878", hover: "#ef4848" }}
+    >
       Logout
     </MiniProfileMenuItem>
   </MiniProfileMenuBlock>
