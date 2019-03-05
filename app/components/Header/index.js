@@ -1,5 +1,5 @@
 import React from "react"
-import { ContentBlock } from "../ContentBlock"
+import { Container } from "../Container"
 import { Line } from "../Line"
 import { HeaderBlock } from "./Block"
 import { HeaderLeft } from "./Left"
@@ -9,7 +9,7 @@ import { Logo } from "./Logo"
 
 export const Header = () => (
   <>
-    <ContentBlock>
+    <Container>
       <HeaderBlock>
         <HeaderLeft>
           <Logo />
@@ -18,7 +18,7 @@ export const Header = () => (
           <ConnectedMiniProfile />
         </HeaderRight>
       </HeaderBlock>
-    </ContentBlock>
+    </Container>
     <Line />
   </>
 )

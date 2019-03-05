@@ -19,6 +19,20 @@ const GlobalStyles = createGlobalStyle`
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
+
+  a {
+    color: #067df7;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ::selection {
+    background-color: #79FFE1;
+    color: #000;
+  }
 `
 
 class CustomApp extends App {

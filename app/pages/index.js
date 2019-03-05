@@ -1,6 +1,7 @@
 import React from "react"
 import Head from "next/head"
 import { Header } from "../components/Header"
+import { Intro } from "../components/Intro"
 
 class Index extends React.Component {
   render() {
@@ -10,6 +11,7 @@ class Index extends React.Component {
           <title>AutoChess Arena</title>
         </Head>
         <Header />
+        <Intro />
       </>
     )
   }

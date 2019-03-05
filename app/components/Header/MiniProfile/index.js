@@ -20,9 +20,9 @@ class MiniProfile extends React.Component {
 
   render() {
     const { isMenuOpened } = this.state
-    const { user } = this.props
+    const { isAuthorized, user } = this.props
 
-    if (!user)
+    if (!isAuthorized)
       return (
         <MiniProfileLoginButton href="/login">Login</MiniProfileLoginButton>
       )
@@ -49,6 +49,7 @@ class MiniProfile extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  isAuthorized: sessionSelectors.authorizationSelector(state),
   user: sessionSelectors.userSelector(state)
 })
 
