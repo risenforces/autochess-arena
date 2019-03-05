@@ -5,11 +5,11 @@ export const IntroTitle = styled.h2`
   line-height: 1.2;
   font-weight: 600;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 992px) {
     font-size: 40px;
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 768px) {
     font-size: 32px;
   }
 `
