@@ -18,6 +18,7 @@
     "mongoose": "^5.4.15",
     "morgan": "^1.9.1",
     "next": "^8.0.3",
+    "next-images": "^1.1.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "passport": "^0.4.0",
     "passport-steam": "^1.0.10",

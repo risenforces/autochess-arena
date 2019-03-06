@@ -1,12 +1,12 @@
 import React from "react"
-import Link from "next/link"
-import { Container } from "../Container"
+import { Container } from "../common/Container"
 import { IntroBlock } from "./Block"
 import { IntroTitle } from "./Title"
 import { IntroDescription } from "./Description"
 import { IntroButtons } from "./Buttons"
 import { IntroButton } from "./Button"
 import { IntroSteamIcon } from "./SteamIcon"
+import { Link } from "../common/Link"
 
 export const Intro = () => (
   <Container>
@@ -16,10 +16,8 @@ export const Intro = () => (
         Matchmaking Platform
       </IntroTitle>
       <IntroDescription>
-        <Link href="/" passHref>
-          <a>AutoChess Arena</a>
-        </Link>{" "}
-        makes DAC matchmaking organization easy.
+        <Link href="/">AutoChess Arena</Link> makes DAC matchmaking organization
+        easy.
         <br />
         Don't spend time connecting the steam to discord.{" "}
         <b>Just login and play.</b>

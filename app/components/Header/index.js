@@ -1,6 +1,6 @@
 import React from "react"
-import { Container } from "../Container"
-import { Line } from "../Line"
+import { Container } from "../common/Container"
+import { Line } from "../common/Line"
 import { HeaderBlock } from "./Block"
 import { HeaderLeft } from "./Left"
 import { HeaderRight } from "./Right"
