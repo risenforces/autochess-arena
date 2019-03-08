@@ -6,6 +6,8 @@ import { HeaderLeft } from "./Left"
 import { HeaderRight } from "./Right"
 import { ConnectedMiniProfile } from "./MiniProfile"
 import { Logo } from "./Logo"
+import { ConnectedHeaderMenu } from "./Menu"
+import { HeaderMiddle } from "./Middle"
 
 export const Header = () => (
   <>
@@ -14,6 +16,9 @@ export const Header = () => (
         <HeaderLeft>
           <Logo />
         </HeaderLeft>
+        <HeaderMiddle>
+          <ConnectedHeaderMenu />
+        </HeaderMiddle>
         <HeaderRight>
           <ConnectedMiniProfile />
         </HeaderRight>

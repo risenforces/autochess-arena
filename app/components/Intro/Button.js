@@ -21,6 +21,7 @@ const StyledIntroButton = styled.a`
 
   &:hover {
     transform: translateY(-1px);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 7px 20px;
   }
 
   @media (max-width: 768px) {
